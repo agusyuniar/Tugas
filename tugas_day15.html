@@ -2,35 +2,55 @@
 <html lang="en">
 <head>
     <title>Multiple Choice</title>
+    <style>
+    div{
+        padding: 50px;
+        margin: 150px;
+        width: 800px;
+        background-color:khaki;  
+        border-radius: 20px;
+    }
+    .tombol{
+        font-size: 200%;
+        border-radius:20px;
+        padding: 2%   ;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    </style>
 </head>
 <body>
     <center>
-        <form>
-            <h2>1. Siapakah Presiden pertama Republik Indonesia?</h2>
-            <input type="radio" name="nomor1" value=0> Prof.B.J.Habibie &nbsp;
+        <div>
+            <form id="tanya">
+                <h1>Quiz Anak Bangsa</h1>
+                <h2>1. Siapakah Presiden pertama Republik Indonesia?</h2>
+                <input type="radio" name="nomor1" value=0> Prof.B.J.Habibie &nbsp;
             <input type="radio" name="nomor1" value=0> Abdurrahman Wahid &nbsp;
-            <input type="radio" name="nomor1" value="benar"> Ir. Soekarno &nbsp;
+            <input type="radio" name="nomor1" value=25> Ir. Soekarno &nbsp;
             <input type="radio" name="nomor1" value=0> Es Be Ye &nbsp;
+        
             <h2>2. Siapakah Presiden kedua Republik Indonesia?</h2>
-            <input type="radio" name="nomor2" value="salah" /> Prof.B.J.Habibie &nbsp;
-            <input type="radio" name="nomor2" value="salah" /> Abdurrahman Wahid &nbsp;
-            <input type="radio" name="nomor2" value="salah" /> Ir. Soekarno &nbsp;
-            <input type="radio" name="nomor2" value="benar" /> Jend. Soeharto &nbsp;
+            <input type="radio" name="nomor2" value=0 /> Prof.B.J.Habibie &nbsp;
+            <input type="radio" name="nomor2" value=0 /> Abdurrahman Wahid &nbsp;
+            <input type="radio" name="nomor2" value=0 /> Ir. Soekarno &nbsp;
+            <input type="radio" name="nomor2" value=25 /> Jend. Soeharto &nbsp;
             <h2>3. Siapakah Presiden ketiga Republik Indonesia?</h2>
-            <input type="radio" name="nomor3" value="benar" /> Prof.B.J.Habibie &nbsp;
-            <input type="radio" name="nomor3" value="salah" /> Abdurrahman Wahid &nbsp;
-            <input type="radio" name="nomor3" value="salah" /> Ir. Soekarno &nbsp;
-            <input type="radio" name="nomor3" value="salah" /> Es Be Ye &nbsp;
+            <input type="radio" name="nomor3" value=25 /> Prof.B.J.Habibie &nbsp;
+            <input type="radio" name="nomor3" value=0 /> Abdurrahman Wahid &nbsp;
+            <input type="radio" name="nomor3" value=0 /> Ir. Soekarno &nbsp;
+            <input type="radio" name="nomor3" value=0 /> Es Be Ye &nbsp;
             <h2>4. Siapakah Presiden keempat Republik Indonesia?</h2>
-            <input type="radio" name="nomor4" value="salah" /> Prof.B.J.Habibie &nbsp;
-            <input type="radio" name="nomor4" value="benar" /> Abdurrahman Wahid &nbsp;
-            <input type="radio" name="nomor4" value="salah" /> Ir. Soekarno &nbsp;
-            <input type="radio" name="nomor4" value="salah" /> Es Be Ye &nbsp;
+            <input type="radio" name="nomor4" value=0 /> Prof.B.J.Habibie &nbsp;
+            <input type="radio" name="nomor4" value=25 /> Abdurrahman Wahid &nbsp;
+            <input type="radio" name="nomor4" value=0 /> Ir. Soekarno &nbsp;
+            <input type="radio" name="nomor4" value=0 /> Es Be Ye &nbsp;
             <br>
             <br>
-            <input type="button" value="Periksa" onclick="nilai()" >
+            <input type="button" value="Periksa" onclick="nilai()" class="tombol">
         </form>
         <h2 id="hasil"></h2>
+    </div>
     </center>
 
     <script>
@@ -42,39 +62,31 @@
             var tot = 0
             for(i=0; i<pilih.length; i++){
                 if(pilih[i].checked){
-                    pilih = pilih[i].value
-                    if(pilih == "benar"){
-                        tot += 25
-                    }
+                    tot += parseInt(pilih[i].value)
+                }
+                if(pilih2[i].checked){
+                    if(pilih2[i].checked){
+                    tot += parseInt(pilih2[i].value)
+                }
+                }
+                if(pilih3[i].checked){
+                    if(pilih3[i].checked){
+                    tot += parseInt(pilih3[i].value)
+                }
+                }
+                if(pilih4[i].checked){
+                    if(pilih4[i].checked){
+                    tot += parseInt(pilih4[i].value)
+                }
                 }
             }
-            console.log(pilih)
-            for(j=0; j<pilih2.length; j++){
-                if(pilih2[j].checked){
-                    pilih2 = pilih2[j].value
-                    if(pilih2=='benar'){
-                        tot += 25
-                    }
-                }
+            if(tot === 100){
+                document.getElementById("hasil").innerHTML  = `Nilai anda ${tot} <br><br> Hore...`
+            }else if(tot===0){
+                document.getElementById("hasil").innerHTML  = `Nilai anda ${tot} <br><br> Anda tidak niat jawab`
+            }else{
+                document.getElementById("hasil").innerHTML  = `Nilai anda ${tot} <br><br> Anda bukan orang indonesia` 
             }
-            for(k=0; k<pilih3.length; k++){
-                if(pilih3[k].checked){
-                    pilih3 = pilih3[k].value
-                    if(pilih3=='benar'){
-                        tot += 25
-                    }
-                }
-            }
-            for(l=0; l<pilih4.length; l++){
-                if(pilih4[l].checked){
-                    pilih4 = pilih4[l].value
-                    if(pilih4=='benar'){
-                        tot += 25
-                    }
-                }
-            }
-            console.log(tot)
-            document.getElementById("hasil").innerHTML  = tot 
         }
     </script>
 </body>
