@@ -1,0 +1,20 @@
+ function logins(){
+        var a = document.getElementById("user").value
+        var b = document.getElementById("pass").value
+        for(i=0; i<userList.length;i++){
+            if(a===userList[i].user && b===userList[i].password){
+                var c = userList[i].role
+                if(c==='admin'){
+                    console.log('admin')
+                    document.getElementById("inisial").innerHTML = ''
+                    administrator()
+                }
+                else if(c==='user'){
+                    console.log('user')
+                }
+            }
+            else{
+                    console.log('tidak terdaftar')
+                }
+        }
+    }
